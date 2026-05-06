@@ -7,37 +7,37 @@
 #include <iomanip>
 #include <sstream>
 #include <numeric>
+#include <map>
 
 using namespace std;
 
 int main()
 {
-    long long N, ans = 0, x, y;
-    vector<pair<long long, long long>> xy;
-
+    int N;
+    long long ans = 0, x, y, resultsum = 0, resultdiff = 0;
+    map<long long, vector<long long>> sum, diff;
     cin >> N;
+
+    // เก็บเส้นแทยงเดียวกัน หาค่ามากสุดน้อยสุด
 
     for (int i = 0; i < N; i++)
     {
         cin >> x >> y;
-        xy.push_back({x, y}); // จุด A i,C j แทยง
+        sum[x + y].push_back(x);
+        diff[y - x].push_back(x);
     }
 
-    for (int i = 0; i < N; i++)
+    for (auto const &[name, v] : sum)
     {
-        for (int j = 0; j < N; j++)
-        {
-            if (j != i)
-            {
-                long long dx = abs(xy[j].first - xy[i].first);
-                long long dy = abs(xy[j].second - xy[i].second);
-                if (dx == dy)
-                {
-                    ans = max(ans, dx);
-                }
-            };
-        }
+        resultsum = max(resultsum, *max_element(v.begin(), v.end()) - *min_element(v.begin(), v.end()));
     }
+
+    for (auto const &[name, v] : diff)
+    {
+        resultdiff = max(resultdiff, *max_element(v.begin(), v.end()) - *min_element(v.begin(), v.end()));
+    }
+
+    ans = max(resultsum, resultdiff);
 
     cout << ans;
 }
