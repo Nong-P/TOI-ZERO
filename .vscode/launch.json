@@ -7,9 +7,9 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "d:/LinuxHome/Projects/TOI/TOI-Zero",
-      "program": "d:/LinuxHome/Projects/TOI/TOI-Zero/build/Debug/outDebug",
+      "externalConsole": false,
+      "cwd": "/home/nongpee/Projects/TOI-ZERO/TOI-Zero/A2",
+      "program": "/home/nongpee/Projects/TOI-ZERO/TOI-Zero/A2/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
